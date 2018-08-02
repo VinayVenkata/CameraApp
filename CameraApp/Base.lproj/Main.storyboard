@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6RY-ZM-4AN">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +13,76 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CameraApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eUZ-TV-pdu">
+                                <rect key="frame" x="0.0" y="64" width="375" height="412"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="412" id="cOM-r5-OTx"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WPJ-pE-1G0">
+                                <rect key="frame" x="140" y="518" width="95" height="30"/>
+                                <state key="normal" title="Open Camera"/>
+                                <connections>
+                                    <action selector="openCamera:" destination="BYZ-38-t0r" eventType="touchUpInside" id="W2n-09-1pb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bpx-R2-y9S">
+                                <rect key="frame" x="120" y="556" width="134" height="30"/>
+                                <state key="normal" title="Open Photo Library"/>
+                                <connections>
+                                    <action selector="openLibrary:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ibf-qI-1Ud"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="eUZ-TV-pdu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="3pC-qz-0jG"/>
+                            <constraint firstItem="WPJ-pE-1G0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9PZ-8e-Tok"/>
+                            <constraint firstItem="bpx-R2-y9S" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZLK-nI-Kv1"/>
+                            <constraint firstItem="WPJ-pE-1G0" firstAttribute="top" secondItem="eUZ-TV-pdu" secondAttribute="bottom" constant="42" id="eBj-hy-c6R"/>
+                            <constraint firstItem="eUZ-TV-pdu" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="fZH-ei-IRo"/>
+                            <constraint firstItem="eUZ-TV-pdu" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="hXo-yc-eyx"/>
+                            <constraint firstItem="bpx-R2-y9S" firstAttribute="top" secondItem="WPJ-pE-1G0" secondAttribute="bottom" constant="8" id="rSf-JV-k8o"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="ngR-Qe-n7z">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="LRG-Wb-o1h">
+                            <connections>
+                                <action selector="saveButtonClicked:" destination="BYZ-38-t0r" id="Nfy-ba-9tk"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="imageView" destination="eUZ-TV-pdu" id="JNS-ju-nT9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1076" y="204.64767616191907"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="EtD-5D-hxm">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6RY-ZM-4AN" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vbK-4o-kOp">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="7zH-Vt-Mus"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xT3-in-YOR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="204.64767616191907"/>
         </scene>
     </scenes>
 </document>
